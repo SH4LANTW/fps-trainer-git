@@ -7,31 +7,26 @@ using UnityEngine;
 
 public class GameManager : NetworkBehaviour
 {
-    private NetworkVariable<int> totalhitCount = new NetworkVariable<int>(0);
+    private NetworkVariable<int> net_totalhitCount = new NetworkVariable<int>(0);
+    private int playerHitCount = 0;
     [SerializeField] private GameObject pfTargetBox;
-    public FpsPlayerUI playerUiScript;
 
     public override void OnNetworkSpawn()
     {
-        // if(!IsOwner){ //only enable local owner's script
-        //     Debug.Log("turned off not owner's scripts");
-        //     enabled = false;
-        //     return;
-        // }
-        playerUiScript = FindObjectOfType<FpsPlayerUI>(); //not correct, need to specify proper player than only find a script
-        playerUiScript.InitializePlayerCanvas(IsClient);
-        
-        totalhitCount.OnValueChanged += (int oldValue, int newValue) => { Debug.Log(totalhitCount.Value); };
-        totalhitCount.OnValueChanged += playerUiScript.HitCountUiUpdate;
 
+        Debug.Log(OwnerClientId);
+        //net_totalhitCount.OnValueChanged += (int oldValue, int newValue) => { Debug.Log(net_totalhitCount.Value); };
         if (IsServer) //methods only run on server
         {
-            Debug.Log("is Server");
             StartSpawnBoxTarget();
-            Debug.Log("Server spawned boxes");
         }
-
     }
+
+    public void RegisterPlayerOnSpawn(FpsPlayerUI playerUiScript)
+    {
+        net_totalhitCount.OnValueChanged += playerUiScript.HitCountUiUpdate;
+    }
+
 
     public void StartSpawnBoxTarget()
     {
@@ -50,8 +45,9 @@ public class GameManager : NetworkBehaviour
 
     public void TargetBoxHitAdd(GameObject hittedBox, ulong shooterClientId)
     {
-        totalhitCount.Value++;
-
+        net_totalhitCount.Value++;
+        PlayerTargetBoxHitAdd_ClientRpc(new ClientRpcParams  //only call to the shooter's clientRpc 
+        { Send = new ClientRpcSendParams { TargetClientIds = new List<ulong> { shooterClientId } } });
         Destroy(hittedBox);
 
 
@@ -59,5 +55,14 @@ public class GameManager : NetworkBehaviour
         GameObject clientSpawnBox = Instantiate(pfTargetBox, generatePos, Quaternion.identity); //spawn new box on server
         clientSpawnBox.GetComponent<NetworkObject>().Spawn(true); //spawn the same box on clients   
     }
+
+    [ClientRpc] //client player target box hit add
+    private void PlayerTargetBoxHitAdd_ClientRpc(ClientRpcParams crp)
+    {
+        playerHitCount++;
+        Debug.Log("Local Player hit Count" + playerHitCount);
+    }
+
+
 
 }

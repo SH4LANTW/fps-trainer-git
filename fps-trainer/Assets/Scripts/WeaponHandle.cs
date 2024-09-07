@@ -20,7 +20,8 @@ public class WeaponHandle : NetworkBehaviour
     public void ArFireRaycast(){
         ArFireRaycast_ServerRPC(rearSightPos.position, transform.forward, arFireRange);
     }
-    [ServerRpc]
+
+    [ServerRpc] 
     private void ArFireRaycast_ServerRPC(Vector3 rearSightPos, Vector3 forwardPos, float arFireRange){
         Ray ray = new Ray(rearSightPos, forwardPos);
         if(Physics.Raycast(ray, out RaycastHit hit, arFireRange)){

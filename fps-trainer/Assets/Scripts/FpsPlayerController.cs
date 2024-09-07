@@ -64,12 +64,15 @@ public class FpsPlayerController : NetworkBehaviour
 
             PlayerInput playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>(); //only owner can have this input
             playerInput.enabled = true;
+
         }
         if(!IsOwner){ 
             enabled = false; //if it's not the owner running this script then disable script
             return;
         }
     }
+
+    
 
     void Start()
     {

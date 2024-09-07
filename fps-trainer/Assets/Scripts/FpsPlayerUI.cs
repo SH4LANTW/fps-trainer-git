@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class FpsPlayerUI : MonoBehaviour
+public class FpsPlayerUI : NetworkBehaviour
 {
     [SerializeField] private TextMeshProUGUI hitCountUi;
 
-    public void InitializePlayerCanvas(bool isOwner)
+    public override void OnNetworkSpawn()
     {
-        if (isOwner)
+        if (IsLocalPlayer)
         {
-            transform.gameObject.GetComponent<Canvas>().enabled = true;
+            FindObjectOfType<GameManager>().RegisterPlayerOnSpawn(this); //register player object to gamemanager on start up
+            Debug.Log("send");
+            
+            InitializePlayerCanvas();
         }
+    }
+
+
+
+    public void InitializePlayerCanvas()
+    {
+        transform.gameObject.GetComponent<Canvas>().enabled = true;
     }
 
     public void HitCountUiUpdate(int oldV, int newV)
