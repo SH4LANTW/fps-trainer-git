@@ -20,35 +20,47 @@ MonoBehaviour:
     - goDatasByGlobalId:
         keys:
         - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-705507993-0
-        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-4243186317533227205-7491598429294946518
-        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-7856492122057565637-7491598429294946518
-        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-7150378922267864223-7491598429294946518
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-151916318-0
         values:
         - iColor: 0
           icon: Terrain Icon
-        - iColor: 0
-          icon: CapsuleCollider Icon
-        - iColor: 0
-          icon: AvatarMask On Icon
         - iColor: 0
           icon: Camera Icon
       goDatasByInstanceId:
-        keys: ea5c0000c25c00000c5d0000b85c000086ce00001ace0000dacd000056cf0000
+        keys: 0c6700001afbffff0cfbfffffefaffff2afbffffe8b300004684feff8cc20000fac100009c0b01000a0b01005a170100c81601004c1f0100ba1e0100082b0100762a0100
         values:
-        - iColor: 0
-          icon: 
-        - iColor: 9
-          icon: CapsuleCollider Icon
-        - iColor: 0
-          icon: Camera Icon
-        - iColor: 0
-          icon: AvatarMask On Icon
         - iColor: 0
           icon: Terrain Icon
         - iColor: 0
           icon: CapsuleCollider Icon
         - iColor: 0
           icon: AvatarMask On Icon
+        - iColor: 0
+          icon: Camera Icon
+        - iColor: 0
+          icon: 
+        - iColor: 0
+          icon: Terrain Icon
+        - iColor: 2
+          icon: Camera Icon
+        - iColor: 0
+          icon: Terrain Icon
+        - iColor: 2
+          icon: Camera Icon
+        - iColor: 0
+          icon: Terrain Icon
+        - iColor: 2
+          icon: Camera Icon
+        - iColor: 0
+          icon: Terrain Icon
+        - iColor: 2
+          icon: Camera Icon
+        - iColor: 0
+          icon: Terrain Icon
+        - iColor: 2
+          icon: Camera Icon
+        - iColor: 0
+          icon: Terrain Icon
         - iColor: 0
           icon: Camera Icon
     - goDatasByGlobalId:

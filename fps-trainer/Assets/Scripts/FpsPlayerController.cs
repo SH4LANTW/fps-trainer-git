@@ -8,7 +8,8 @@ using UnityEngine.InputSystem;
 public class FpsPlayerController : NetworkBehaviour
 {
     [Header("InputAction attribute")]
-    public Vector2 moveInput;
+    [SerializeField] private Vector2 moveInput;
+    [SerializeField] private bool enableLook = true;
     private InputAction fpsInput;
     private float lookRotationX;
     private float lookRotationY;
@@ -56,23 +57,28 @@ public class FpsPlayerController : NetworkBehaviour
     [SerializeField] private float smoothSway = 10f;
     [SerializeField] private float smoothSwayRot = 10f;
 
+    [Header("Network Attributes")]
+    private PlayerInput localPlayerInput;
+
 
     public override void OnNetworkSpawn()
     {
-        if(IsLocalPlayer){
+        if (IsLocalPlayer)
+        {
             fpsCam.gameObject.SetActive(true); //only owner can enable this cam
 
-            PlayerInput playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>(); //only owner can have this input
-            playerInput.enabled = true;
+            localPlayerInput = GetComponent<PlayerInput>(); //only owner can have this input
+            localPlayerInput.enabled = true;
 
         }
-        if(!IsOwner){ 
+        if (!IsOwner)
+        {
             enabled = false; //if it's not the owner running this script then disable script
             return;
         }
     }
 
-    
+
 
     void Start()
     {
@@ -93,12 +99,15 @@ public class FpsPlayerController : NetworkBehaviour
     public void Look(InputAction.CallbackContext context)
     {
         //mouse input actions
+        if (enableLook)
+        {
+            mouseMovement.x = context.ReadValue<Vector2>().x;
+            mouseMovement.y = context.ReadValue<Vector2>().y;
+            lookRotationX -= mouseMovement.y * lookSpeed * 0.01f;
+            lookRotationX = Mathf.Clamp(lookRotationX, -90f, 90f);
+            lookRotationY += mouseMovement.x * lookSpeed * 0.01f;
+        }
 
-        mouseMovement.x = context.ReadValue<Vector2>().x;
-        mouseMovement.y = context.ReadValue<Vector2>().y;
-        lookRotationX -= mouseMovement.y * lookSpeed * 0.01f;
-        lookRotationX = Mathf.Clamp(lookRotationX, -90f, 90f);
-        lookRotationY += mouseMovement.x * lookSpeed * 0.01f;
     }
     public void ADS(InputAction.CallbackContext context)
     {
@@ -132,7 +141,7 @@ public class FpsPlayerController : NetworkBehaviour
             arAnimScript.ArAimFireAr();
             weaponHandleScript.ArFireRaycast();
         }
-        
+
     }
     public void Reload(InputAction.CallbackContext context)
     {
@@ -156,6 +165,23 @@ public class FpsPlayerController : NetworkBehaviour
         {
             armsAnimScript.ArEquipArms();
             arAnimScript.ArEquipAr();
+        }
+    }
+    public void AltCursorMode(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            enableLook = false;
+            Debug.Log("pressed");
+        }
+        else if (context.canceled)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            enableLook = true;
+            Debug.Log("released");
         }
     }
 
@@ -183,10 +209,11 @@ public class FpsPlayerController : NetworkBehaviour
     {
         isSprinting = false;
         _moveSpeed = Mathf.Sqrt(moveInput.x * moveInput.x + moveInput.y * moveInput.y); //check move speed for animator blend tree
-        if (pressedSprint && moveInput.y == 1){
+        if (pressedSprint && moveInput.y == 1)
+        {
             _moveSpeed += 1;//able to sprint then blend tree param +1 and isSprinting
             isSprinting = true;
-        } 
+        }
         currentBlendIndex = Mathf.Lerp(currentBlendIndex, _moveSpeed, blendSpeed * Time.deltaTime); //lerp index towards target movespeed(0-1)
         arAnimScript.ArMoveBlendAr(currentBlendIndex); //send to animator blend tree param
         armsAnimScript.ArMoveBlendArms(currentBlendIndex); //send to animator blend tree param

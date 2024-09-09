@@ -15,8 +15,9 @@ public class FpsPlayerUI : NetworkBehaviour
         {
             FindObjectOfType<GameManager>().RegisterPlayerOnSpawn(this); //register player object to gamemanager on start up
             Debug.Log("send");
-            
-            InitializePlayerCanvas();
+        }
+        else{
+            InitializePlayerCanvas(); //turn off notLocalPlayer's Canvas
         }
     }
 
@@ -24,7 +25,7 @@ public class FpsPlayerUI : NetworkBehaviour
 
     public void InitializePlayerCanvas()
     {
-        transform.gameObject.GetComponent<Canvas>().enabled = true;
+        transform.gameObject.GetComponent<Canvas>().enabled = false;
     }
 
     public void HitCountUiUpdate(int oldV, int newV)

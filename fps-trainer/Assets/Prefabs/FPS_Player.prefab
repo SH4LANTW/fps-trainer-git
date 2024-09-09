@@ -29,13 +29,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8984891279641531583}
-  - {fileID: 5802113159712246145}
   m_Father: {fileID: 4776279212180216976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -792, y: -400}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2188796124205846099
 GameObject:
@@ -159,12 +158,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4105707213528745303}
+  m_Father: {fileID: 8984891279641531583}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 159}
-  m_SizeDelta: {x: 154.1663, y: 50}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.040496826}
+  m_SizeDelta: {x: 154.1663, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4311132921649421297
 CanvasRenderer:
@@ -274,7 +273,6 @@ GameObject:
   - component: {fileID: 3581742575034509295}
   - component: {fileID: 4505641981787507448}
   - component: {fileID: 2852283673603338145}
-  - component: {fileID: 2290685188870779073}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -347,29 +345,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2290685188870779073
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4045496329037147382}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4243186317533227205
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +358,7 @@ GameObject:
   - component: {fileID: 3148630055904338970}
   - component: {fileID: 5224175535089003569}
   - component: {fileID: 5703585258661007625}
+  - component: {fileID: 6201947341807971969}
   - component: {fileID: 1243551297201935793}
   m_Layer: 0
   m_Name: FPS_Player
@@ -602,7 +578,23 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5cac872f-d2d1-4e32-8719-8d5aa7573047
     m_ActionName: Player/Sprint[/Keyboard/leftShift]
-  m_NeverAutoSwitchControlSchemes: 0
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5224175535089003569}
+        m_TargetAssemblyTypeName: FpsPlayerController, Assembly-CSharp
+        m_MethodName: AltCursorMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d828025c-9549-489f-b588-50ba31a7136e
+    m_ActionName: Player/CursorMode[/Keyboard/leftAlt]
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -641,6 +633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveInput: {x: 0, y: 0}
+  enableLook: 1
   arAnimScript: {fileID: 3001902398975522749}
   armsAnimScript: {fileID: 8113812616395364432}
   weaponHandleScript: {fileID: 6666239247371120269}
@@ -689,6 +682,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!65 &6201947341807971969
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4243186317533227205}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.43410105, y: 1.1833194, z: 0.5297459}
+  m_Center: {x: 0.0079704225, y: 0.11557096, z: 0.06376329}
 --- !u!114 &1243551297201935793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,7 +745,6 @@ GameObject:
   - component: {fileID: 3774119867432334283}
   - component: {fileID: 4476903882526179100}
   - component: {fileID: 4408118167137379931}
-  - component: {fileID: 2269753510446196454}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -804,27 +817,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2269753510446196454
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6368671475694198410}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7150378922267864223
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +930,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7353767626408478390}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 7881389799173595562}
@@ -1148,12 +1140,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5802113159712246145}
   m_Father: {fileID: 4105707213528745303}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 159}
+  m_AnchoredPosition: {x: 0, y: -47}
   m_SizeDelta: {x: 173.0475, y: 58.919}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2170708566554307223

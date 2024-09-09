@@ -10,10 +10,11 @@ public class GameManager : NetworkBehaviour
     private NetworkVariable<int> net_totalhitCount = new NetworkVariable<int>(0);
     private int playerHitCount = 0;
     [SerializeField] private GameObject pfTargetBox;
+    [SerializeField] private Camera startCamara;
 
     public override void OnNetworkSpawn()
     {
-
+        startCamara.enabled = false;
         Debug.Log(OwnerClientId);
         //net_totalhitCount.OnValueChanged += (int oldValue, int newValue) => { Debug.Log(net_totalhitCount.Value); };
         if (IsServer) //methods only run on server
