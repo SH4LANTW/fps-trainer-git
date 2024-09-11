@@ -21,48 +21,75 @@ MonoBehaviour:
         keys:
         - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-705507993-0
         - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-151916318-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-1109073309-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-1575413168-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-480933281-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-1327824322-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-1939358942-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-1313507253-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-2071263524-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-1946709875-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-1066249697-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-1690019873-0
+        - GlobalObjectId_V1-2-9fc0d4010bbf28b4594072e72b8655ab-41449330-0
         values:
         - iColor: 0
           icon: Terrain Icon
-        - iColor: 0
-          icon: Camera Icon
-      goDatasByInstanceId:
-        keys: 0c6700001afbffff0cfbfffffefaffff2afbffffe8b300004684feff8cc20000fac100009c0b01000a0b01005a170100c81601004c1f0100ba1e0100082b0100762a0100
-        values:
-        - iColor: 0
-          icon: Terrain Icon
-        - iColor: 0
-          icon: CapsuleCollider Icon
-        - iColor: 0
-          icon: AvatarMask On Icon
         - iColor: 0
           icon: Camera Icon
         - iColor: 0
           icon: 
+        - iColor: 6
+          icon: 
+        - iColor: 6
+          icon: 
         - iColor: 0
-          icon: Terrain Icon
+          icon: Folder Icon
         - iColor: 2
-          icon: Camera Icon
+          icon: Folder Icon
+        - iColor: 9
+          icon: Folder Icon
+        - iColor: 8
+          icon: Folder Icon
+        - iColor: 4
+          icon: Folder Icon
+        - iColor: 0
+          icon: 
+        - iColor: 6
+          icon: 
+        - iColor: 5
+          icon: 
+      goDatasByInstanceId:
+        keys: 206e0000bc6d0000c06e0000306f0000f86d0000046f0000926f0000fc6e0000ac6f00009a6f0000ac6e0000d86f0000506f000086daffff
+        values:
         - iColor: 0
           icon: Terrain Icon
+        - iColor: 0
+          icon: Camera Icon
+        - iColor: 0
+          icon: 
+        - iColor: 6
+          icon: 
+        - iColor: 6
+          icon: 
+        - iColor: 0
+          icon: Folder Icon
         - iColor: 2
-          icon: Camera Icon
+          icon: Folder Icon
+        - iColor: 9
+          icon: Folder Icon
+        - iColor: 8
+          icon: Folder Icon
+        - iColor: 4
+          icon: Folder Icon
         - iColor: 0
-          icon: Terrain Icon
-        - iColor: 2
-          icon: Camera Icon
-        - iColor: 0
-          icon: Terrain Icon
-        - iColor: 2
-          icon: Camera Icon
-        - iColor: 0
-          icon: Terrain Icon
-        - iColor: 2
-          icon: Camera Icon
-        - iColor: 0
-          icon: Terrain Icon
-        - iColor: 0
-          icon: Camera Icon
+          icon: 
+        - iColor: 6
+          icon: 
+        - iColor: 6
+          icon: 
+        - iColor: 5
+          icon: 
     - goDatasByGlobalId:
         keys: []
         values: []

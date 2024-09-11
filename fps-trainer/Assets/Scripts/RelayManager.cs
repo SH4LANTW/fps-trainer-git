@@ -13,10 +13,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConnectionUiBtn : MonoBehaviour
+public class RelayManager : MonoBehaviour
 {
-    // [SerializeField] private Button hostButton;
-    // [SerializeField] private Button clientButton;
     [SerializeField] private TextMeshProUGUI joinCodeText;
     [SerializeField] private TMP_InputField joinCodeInputField;
 
@@ -38,7 +36,7 @@ public class ConnectionUiBtn : MonoBehaviour
         await StartClientWithRealy(joinCodeInputField.text);
     }
 
-    private async Task<string> StartHostWithRelay(int maxConnections = 3)
+    public async Task<string> StartHostWithRelay(int maxConnections = 3)
     {
         Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxConnections);
 
@@ -49,7 +47,7 @@ public class ConnectionUiBtn : MonoBehaviour
         return NetworkManager.Singleton.StartHost() ? joinCode : null;
 
     }
-    private async Task<bool> StartClientWithRealy(string joinCode)
+    public async Task<bool> StartClientWithRealy(string joinCode)
     {
         JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
